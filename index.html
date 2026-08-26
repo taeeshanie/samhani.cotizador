@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Cotizador</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f5f5f5;
+            color: #333;
+        }
+
+        .contenedor {
+            max-width: 600px;
+            margin: 40px auto;
+            padding: 25px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            margin-top: 25px;
+            border: none;
+            border-radius: 8px;
+            background: #222;
+            color: white;
+            font-size: 17px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #444;
+        }
+
+        .resultado {
+            margin-top: 25px;
+            padding: 20px;
+            background: #f0f0f0;
+            border-radius: 10px;
+        }
+
+        .resultado p {
+            margin: 10px 0;
+        }
+
+        .total {
+            font-size: 24px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="contenedor">
+
+    <h1>💰 Mi Cotizador</h1>
+
+    <label>Precio del producto (USD)</label>
+    <input type="number" id="producto" placeholder="Ej: 100">
+
+    <label>Cantidad</label>
+    <input type="number" id="cantidad" value="1" min="1">
+
+    <label>Envío (USD)</label>
+    <input type="number" id="envio" placeholder="Ej: 20">
+
+    <label>Otros gastos (USD)</label>
+    <input type="number" id="otros" placeholder="Ej: 10">
+
+    <button onclick="calcular()">Calcular</button>
+
+    <div class="resultado">
+
+        <p>
+            Productos: USD
+            <span id="subtotal">0.00</span>
+        </p>
+
+        <p>
+            Envío: USD
+            <span id="resultadoEnvio">0.00</span>
+        </p>
+
+        <p>
+            Otros gastos: USD
+            <span id="resultadoOtros">0.00</span>
+        </p>
+
+        <p class="total">
+            TOTAL: USD
+            <span id="total">0.00</span>
+        </p>
+
+        <p>
+            Precio por unidad: USD
+            <span id="porUnidad">0.00</span>
+        </p>
+
+    </div>
+
+</div>
+
+<script>
+
+function calcular() {
+
+    let producto = parseFloat(document.getElementById("producto").value) || 0;
+    let cantidad = parseFloat(document.getElementById("cantidad").value) || 1;
+    let envio = parseFloat(document.getElementById("envio").value) || 0;
+    let otros = parseFloat(document.getElementById("otros").value) || 0;
+
+    let subtotal = producto * cantidad;
+
+    let total = subtotal + envio + otros;
+
+    let porUnidad = total / cantidad;
+
+    document.getElementById("subtotal").textContent = subtotal.toFixed(2);
+    document.getElementById("resultadoEnvio").textContent = envio.toFixed(2);
+    document.getElementById("resultadoOtros").textContent = otros.toFixed(2);
+    document.getElementById("total").textContent = total.toFixed(2);
+    document.getElementById("porUnidad").textContent = porUnidad.toFixed(2);
+}
+
+</script>
+
+</body>
+</html>
