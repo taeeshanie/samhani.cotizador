@@ -1,72 +1,44 @@
+# Samahani Cotizador
+
 ```html
 <!DOCTYPE html>
 <html lang="es">
 <head>
-
   <meta charset="UTF-8">
-
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>Samahani Cotizador</title>
 
-
-  <!-- TIPOGRAFÍA YESEVA ONE -->
-
   <link rel="preconnect" href="https://fonts.googleapis.com">
-
-  <link
-    rel="preconnect"
-    href="https://fonts.gstatic.com"
-    crossorigin
-  >
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
   <link
     href="https://fonts.googleapis.com/css2?family=Yeseva+One&display=swap"
     rel="stylesheet"
   >
 
-
   <style>
-
-    /* =========================
-       CONFIGURACIÓN GENERAL
-    ========================= */
 
     * {
       box-sizing: border-box;
     }
 
-
     body {
-
       margin: 0;
-
       min-height: 100vh;
+      padding: 20px 15px 180px;
 
       display: flex;
       flex-direction: column;
       align-items: center;
 
-      padding: 25px 15px 180px;
-
       font-family: "Yeseva One", serif;
 
-
-      /* IMAGEN DE FONDO */
-
       background-image: url("fondo.png");
-
       background-size: cover;
-
       background-position: center top;
-
       background-repeat: no-repeat;
-
       background-attachment: fixed;
-
     }
 
 
@@ -75,47 +47,30 @@
     ========================= */
 
     .decoracion {
-
       width: 100%;
-
-      max-width: 850px;
-
-      display: flex;
-
-      justify-content: center;
-
-      margin-bottom: 20px;
-
+      max-width: 650px;
+      margin-bottom: 30px;
+      text-align: center;
     }
 
-
     .decoracion img {
-
       width: 100%;
-
-      max-width: 700px;
-
       height: auto;
-
       display: block;
-
     }
 
 
     /* =========================
-       CONTENEDOR DE LA MANZANA
+       CONTENEDOR GENERAL
     ========================= */
 
-    .apple-container {
-
+    .apple-wrapper {
       position: relative;
 
-      width: 100%;
+      width: min(92vw, 480px);
 
-      max-width: 650px;
-
-      margin-top: 80px;
-
+      margin-top: 85px;
+      padding-top: 25px;
     }
 
 
@@ -123,79 +78,54 @@
        TALLO
     ========================= */
 
-    .apple-container::before {
-
+    .apple-wrapper::before {
       content: "";
 
       position: absolute;
 
-      width: 42px;
-
-      height: 115px;
-
-      top: -85px;
-
-      left: 50%;
-
-      transform:
-        translateX(-50%)
-        rotate(-20deg);
-
-      border-radius: 25px;
-
-      background:
-
-        linear-gradient(
-          90deg,
-          #4d200d,
-          #8c461c,
-          #4d200d
-        );
-
-      z-index: 5;
-
-    }
-
-
-    /* =========================
-       HOJA VERDE
-    ========================= */
-
-    .apple-container::after {
-
-      content: "";
-
-      position: absolute;
-
-      width: 150px;
-
-      height: 85px;
+      width: 30px;
+      height: 100px;
 
       top: -70px;
+      left: 48%;
 
-      left: 50%;
+      background: #713415;
 
-      transform: rotate(-28deg);
+      border-radius: 20px;
 
-      border-radius:
-        100% 0
-        100% 0;
+      transform: rotate(-18deg);
 
-      background:
-
-        linear-gradient(
-          135deg,
-          #82b82e,
-          #376f0e
-        );
-
-      z-index: 4;
-
+      z-index: 10;
     }
 
 
     /* =========================
-       MANZANA ROJA
+       HOJA
+    ========================= */
+
+    .apple-wrapper::after {
+      content: "";
+
+      position: absolute;
+
+      width: 105px;
+      height: 55px;
+
+      top: -55px;
+      left: 50%;
+
+      background: #5d941d;
+
+      border-radius: 100% 0 100% 0;
+
+      transform: rotate(-25deg);
+
+      z-index: 9;
+    }
+
+
+    /* =========================
+       CUERPO DE LA MANZANA
     ========================= */
 
     .apple {
@@ -204,140 +134,138 @@
 
       width: 100%;
 
-      padding: 38px;
+      min-height: 590px;
+
+      padding: 75px 38px 55px;
 
       background:
-
         radial-gradient(
-          circle at 28% 20%,
-          #ff6767,
-          #e32323 32%,
-          #b20f0f 75%
+          circle at 28% 22%,
+          #ff7777 0%,
+          #e63232 30%,
+          #c41414 65%,
+          #9f0d0d 100%
         );
 
-      border:
-
-        8px solid #b81717;
-
+      /*
+      FORMA PRINCIPAL
+      */
 
       border-radius:
-
-        45% 45% 43% 43%
-
+        46% 46% 48% 48%
         /
+        30% 30% 58% 58%;
 
-        32% 32% 58% 58%;
-
+      border: 7px solid #a90f0f;
 
       box-shadow:
-
-        inset
-        12px
-        12px
-        25px
-        rgba(255,255,255,0.18),
-
-        inset
-        -15px
-        -15px
-        30px
-        rgba(80,0,0,0.35),
-
-        0
-        20px
-        35px
-        rgba(0,0,0,0.25);
-
+        inset 15px 15px 25px rgba(255,255,255,0.18),
+        inset -18px -18px 30px rgba(80,0,0,0.3),
+        0 18px 35px rgba(0,0,0,0.25);
     }
 
 
-    /* =========================
-       BRILLO DE LA MANZANA
-    ========================= */
+    /*
+    LÓBULO IZQUIERDO
+    */
 
-    .apple::before {
-
-      content: "";
+    .apple-lobe-left {
 
       position: absolute;
 
-      width: 120px;
+      width: 55%;
+      height: 180px;
 
-      height: 300px;
+      top: -35px;
+      left: 0;
 
-      top: 100px;
-
-      left: 40px;
+      background: #d82020;
 
       border-radius: 50%;
 
-      background:
+      z-index: -1;
+    }
 
-        linear-gradient(
-          90deg,
-          rgba(255,255,255,0.25),
-          transparent
-        );
 
-      transform: rotate(15deg);
+    /*
+    LÓBULO DERECHO
+    */
 
-      pointer-events: none;
+    .apple-lobe-right {
 
+      position: absolute;
+
+      width: 55%;
+      height: 180px;
+
+      top: -35px;
+      right: 0;
+
+      background: #d82020;
+
+      border-radius: 50%;
+
+      z-index: -1;
     }
 
 
     /* =========================
-       INTERIOR CREMA
+       BRILLO
+    ========================= */
+
+    .apple-shine {
+
+      position: absolute;
+
+      width: 65px;
+      height: 210px;
+
+      top: 100px;
+      left: 38px;
+
+      border-radius: 50%;
+
+      background: linear-gradient(
+        90deg,
+        rgba(255,255,255,0.32),
+        rgba(255,255,255,0)
+      );
+
+      transform: rotate(18deg);
+
+      pointer-events: none;
+    }
+
+
+    /* =========================
+       PANEL CREMA
     ========================= */
 
     .apple-inner {
 
       position: relative;
 
-      z-index: 2;
+      z-index: 5;
 
-      min-height: 520px;
+      width: 100%;
 
-      padding:
+      min-height: 430px;
 
-        70px
-        45px
-        50px;
-
-
-      background:
-
-        linear-gradient(
-          135deg,
-          #fffdf4,
-          #f7f0dc
-        );
-
-
-      border-radius:
-
-        38% 38% 40% 40%
-
-        /
-
-        28% 28% 52% 52%;
-
-
-      box-shadow:
-
-        inset
-        0
-        0
-        30px
-        rgba(120,90,30,0.08);
-
+      padding: 45px 25px;
 
       display: flex;
-
       flex-direction: column;
-
       justify-content: center;
 
+      background: #fff9e8;
+
+      border-radius:
+        40% 40% 42% 42%
+        /
+        30% 30% 50% 50%;
+
+      box-shadow:
+        inset 0 0 25px rgba(120,90,30,0.1);
     }
 
 
@@ -349,144 +277,73 @@
 
       width: 100%;
 
-      padding: 20px;
+      padding: 18px;
 
-      border:
+      border: 3px solid #9c2420;
 
-        3px
-        solid
-        #9e2922;
+      border-radius: 18px;
 
-      border-radius: 20px;
-
-      background:
-
-        rgba(
-          255,
-          255,
-          255,
-          0.9
-        );
-
-
-      font-family:
-        "Yeseva One",
-        serif;
-
-      font-size: 24px;
-
-      text-align: center;
+      background: white;
 
       color: #4a332c;
 
+      font-family: "Yeseva One", serif;
+
+      font-size: 20px;
+
+      text-align: center;
+
       outline: none;
-
     }
-
-
-    .input-usd::placeholder {
-
-      color: #999;
-
-    }
-
 
     .input-usd:focus {
-
-      border-color: #4d7d13;
+      border-color: #5d941d;
 
       box-shadow:
-
-        0
-        0
-        0
-        5px
-
-        rgba(
-          77,
-          125,
-          19,
-          0.15
-        );
-
+        0 0 0 4px
+        rgba(93,148,29,0.18);
     }
 
 
     /* =========================
-       BOTÓN VERDE
+       BOTÓN
     ========================= */
 
     button {
 
       width: 100%;
 
-      margin-top: 28px;
+      margin-top: 20px;
 
-      padding: 20px;
+      padding: 18px;
 
       border: none;
 
-      border-radius: 20px;
+      border-radius: 18px;
 
-
-      background:
-
-        linear-gradient(
-          135deg,
-          #659d1d,
-          #3e7010
-        );
-
+      background: #5d941d;
 
       color: white;
 
-      font-family:
-        "Yeseva One",
-        serif;
+      font-family: "Yeseva One", serif;
 
-      font-size: 25px;
+      font-size: 21px;
 
       cursor: pointer;
 
-
       box-shadow:
-
-        0
-        7px
-        0
-        #31570c,
-
-        0
-        12px
-        20px
-        rgba(0,0,0,0.15);
-
-
-      transition: 0.2s;
-
+        0 6px 0 #3f6712;
     }
-
 
     button:hover {
-
-      transform:
-        translateY(-2px);
-
+      transform: translateY(-2px);
     }
 
-
     button:active {
-
-      transform:
-        translateY(4px);
+      transform: translateY(3px);
 
       box-shadow:
-
-        0
-        3px
-        0
-        #31570c;
-
+        0 3px 0 #3f6712;
     }
 
 
@@ -496,297 +353,150 @@
 
     .resultado {
 
-      margin-top: 38px;
-
-      padding: 35px 20px;
-
-      border:
-
-        2px
-        dashed
-        #8d1e1e;
-
-      border-radius: 25px;
-
-
-      background:
-
-        rgba(
-          255,
-          255,
-          255,
-          0.35
-        );
-
-
-      color:
-        #941d1d;
-
-      font-size: 42px;
-
-      text-align: center;
-
       display: none;
 
-      word-break: break-word;
+      margin-top: 25px;
 
+      padding: 25px 12px;
+
+      border: 2px dashed #8e1b1b;
+
+      border-radius: 22px;
+
+      color: #8e1b1b;
+
+      background: rgba(255,255,255,0.55);
+
+      font-size: 34px;
+
+      text-align: center;
     }
 
 
     /* =========================
-       AVISO INFORMATIVO
+       AVISO
     ========================= */
 
     .aviso {
 
-      margin-top: 20px;
+      display: none;
 
-      padding: 16px;
+      margin-top: 16px;
 
-      color: #8d1e1e;
+      padding: 12px 8px;
 
-      font-family:
-        Arial,
-        sans-serif;
+      color: #8e1b1b;
 
-      font-size: 14px;
+      font-family: Arial, sans-serif;
+
+      font-size: 12px;
 
       font-weight: bold;
 
       line-height: 1.5;
 
       text-align: center;
-
-
-      background:
-
-        rgba(
-          255,
-          255,
-          255,
-          0.45
-        );
-
-
-      border-radius: 18px;
-
-
-      display: none;
-
     }
 
 
     /* =========================
-       MENSAJE DE ERROR
+       ERROR
     ========================= */
 
     .error {
 
-      margin-top: 20px;
+      display: none;
 
-      text-align: center;
+      margin-top: 18px;
 
-      color: #8d1e1e;
+      color: #8e1b1b;
 
-      font-family:
-        Arial,
-        sans-serif;
+      font-family: Arial, sans-serif;
+
+      font-size: 14px;
 
       font-weight: bold;
 
-      font-size: 16px;
-
-      display: none;
-
+      text-align: center;
     }
 
 
     /* =========================
-       VERSIÓN PARA CELULAR
+       CELULAR
     ========================= */
 
-    @media (max-width: 600px) {
-
+    @media (max-width: 500px) {
 
       body {
-
-        padding:
-
-          15px
-          10px
-          160px;
-
+        padding: 15px 10px 160px;
       }
 
-
-      .decoracion img {
-
-        max-width: 100%;
-
+      .apple-wrapper {
+        width: 95vw;
+        margin-top: 65px;
       }
-
-
-      .apple-container {
-
-        margin-top: 60px;
-
-      }
-
 
       .apple {
-
-        padding: 20px;
-
-        border-width: 6px;
-
+        min-height: 540px;
+        padding: 65px 24px 40px;
       }
-
 
       .apple-inner {
-
-        min-height: 470px;
-
-        padding:
-
-          60px
-          25px
-          40px;
-
+        min-height: 410px;
+        padding: 35px 20px;
       }
-
-
-      .apple-container::before {
-
-        width: 32px;
-
-        height: 90px;
-
-        top: -68px;
-
-      }
-
-
-      .apple-container::after {
-
-        width: 110px;
-
-        height: 60px;
-
-        top: -55px;
-
-      }
-
-
-      .input-usd {
-
-        font-size: 19px;
-
-        padding: 17px;
-
-      }
-
-
-      button {
-
-        font-size: 20px;
-
-        padding: 17px;
-
-      }
-
 
       .resultado {
-
-        font-size: 32px;
-
-        padding: 25px 15px;
-
-      }
-
-
-      .aviso {
-
-        font-size: 12px;
-
-        padding: 14px;
-
+        font-size: 29px;
       }
 
     }
 
   </style>
-
 </head>
 
 
 <body>
 
-
-  <!-- =========================
-       IMAGEN DECORATIVA
-    ========================= -->
-
+  <!-- IMAGEN DECORATIVA -->
   <div class="decoracion">
-
     <img
       src="decoracion.png"
-      alt="Samahani Cotizador"
+      alt="Samahani"
     >
-
   </div>
 
 
-
-  <!-- =========================
-       CONTENEDOR MANZANA
-    ========================= -->
-
-  <div class="apple-container">
-
-
-    <!-- CUERPO DE LA MANZANA -->
+  <!-- MANZANA -->
+  <div class="apple-wrapper">
 
     <div class="apple">
 
+      <!-- LÓBULOS SUPERIORES -->
+      <div class="apple-lobe-left"></div>
+      <div class="apple-lobe-right"></div>
 
-      <!-- INTERIOR CREMA -->
+      <!-- BRILLO -->
+      <div class="apple-shine"></div>
 
+
+      <!-- INTERIOR -->
       <div class="apple-inner">
 
-
-        <!-- INGRESAR PRECIO -->
-
         <input
-
           type="number"
-
           id="precioUSD"
-
           class="input-usd"
-
           placeholder="Precio en USD"
-
           min="0"
-
           step="0.01"
-
         >
 
 
-
-        <!-- BOTÓN -->
-
-        <button
-          onclick="cotizar()"
-        >
-
+        <button onclick="cotizar()">
           COTIZAR
-
         </button>
 
-
-
-        <!-- RESULTADO -->
 
         <div
           id="resultado"
@@ -794,36 +504,23 @@
         ></div>
 
 
-
-        <!-- AVISO
-             APARECE SOLO DESPUÉS
-             DE COTIZAR -->
-
         <div
           id="aviso"
           class="aviso"
         >
-
           Los precios que se muestran solo incluyen fees.
           El envío a casilla japonesa se cobra por aparte,
           ya que depende del peso y la cantidad de items
           que entren en el envío.
-
         </div>
 
-
-
-        <!-- ERROR -->
 
         <div
           id="error"
           class="error"
         >
-
           Ingresá un precio válido.
-
         </div>
-
 
       </div>
 
@@ -832,155 +529,62 @@
   </div>
 
 
-
   <script>
-
 
     function cotizar() {
 
-
-      /* =====================
-         OBTENER PRECIO
-      ===================== */
-
       const precio = parseFloat(
-
-        document
-          .getElementById("precioUSD")
-          .value
-
+        document.getElementById("precioUSD").value
       );
 
-
-      /* =====================
-         CONFIGURACIÓN
-
-         CAMBIÁ ESTOS VALORES
-         CUANDO LO NECESITES
-      ===================== */
-
       const fees = 3.50;
-
       const dolar = 1530;
 
-
-      /* =====================
-         ELEMENTOS
-      ===================== */
-
       const resultado =
-
-        document
-          .getElementById("resultado");
-
+        document.getElementById("resultado");
 
       const aviso =
-
-        document
-          .getElementById("aviso");
-
+        document.getElementById("aviso");
 
       const error =
-
-        document
-          .getElementById("error");
+        document.getElementById("error");
 
 
-      /* =====================
-         VALIDAR PRECIO
-      ===================== */
+      if (isNaN(precio) || precio <= 0) {
 
-      if (
-
-        isNaN(precio)
-
-        ||
-
-        precio <= 0
-
-      ) {
-
-
-        resultado.style.display =
-          "none";
-
-
-        aviso.style.display =
-          "none";
-
-
-        error.style.display =
-          "block";
-
+        resultado.style.display = "none";
+        aviso.style.display = "none";
+        error.style.display = "block";
 
         return;
-
       }
 
 
-      /* OCULTAR ERROR */
-
-      error.style.display =
-        "none";
+      error.style.display = "none";
 
 
-      /* =====================
-         HACER CÁLCULO
-      ===================== */
+      const totalUSD = precio + fees;
+      const totalARS = totalUSD * dolar;
 
-      const totalUSD =
-
-        precio + fees;
-
-
-      const totalARS =
-
-        totalUSD * dolar;
-
-
-      /* =====================
-         MOSTRAR RESULTADO
-      ===================== */
 
       resultado.innerHTML =
-
         "$ " +
-
         totalARS.toLocaleString(
-
           "es-AR",
-
           {
-
             minimumFractionDigits: 0,
-
             maximumFractionDigits: 0
-
           }
-
         );
 
 
-      resultado.style.display =
-        "block";
-
-
-      /* =====================
-         MOSTRAR AVISO
-         SOLO DESPUÉS
-         DE COTIZAR
-      ===================== */
-
-      aviso.style.display =
-        "block";
-
+      resultado.style.display = "block";
+      aviso.style.display = "block";
 
     }
-
 
   </script>
 
 </body>
-
 </html>
 ```
