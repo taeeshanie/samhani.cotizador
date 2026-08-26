@@ -1,158 +1,143 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi Cotizador</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <style>
-        * {
-            box-sizing: border-box;
-        }
+  <title>🍎🍀SAMHANI COTIZADOR🍀🍎</title>
 
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: #f5f5f5;
-            color: #333;
-        }
+  <style>
+    * {
+      box-sizing: border-box;
+    }
 
-        .contenedor {
-            max-width: 600px;
-            margin: 40px auto;
-            padding: 25px;
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: transparent;
+      font-family: Arial, sans-serif;
+    }
 
-        h1 {
-            text-align: center;
-        }
+    .cotizador {
+      width: 100%;
+      max-width: 420px;
+      padding: 25px;
+      text-align: center;
+    }
 
-        label {
-            display: block;
-            margin-top: 15px;
-            margin-bottom: 5px;
-            font-weight: bold;
-        }
+    h1 {
+      margin: 0 0 25px 0;
+      font-size: 27px;
+      font-weight: bold;
+    }
 
-        input {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            font-size: 16px;
-        }
+    .input-usd {
+      width: 100%;
+      padding: 16px;
+      border: 2px solid #222;
+      border-radius: 12px;
+      font-size: 20px;
+      text-align: center;
+      outline: none;
+    }
 
-        button {
-            width: 100%;
-            padding: 14px;
-            margin-top: 25px;
-            border: none;
-            border-radius: 8px;
-            background: #222;
-            color: white;
-            font-size: 17px;
-            cursor: pointer;
-        }
+    .input-usd:focus {
+      border-color: #7b61ff;
+    }
 
-        button:hover {
-            background: #444;
-        }
+    button {
+      width: 100%;
+      margin-top: 15px;
+      padding: 16px;
+      border: none;
+      border-radius: 12px;
+      background: #222;
+      color: white;
+      font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
+    }
 
-        .resultado {
-            margin-top: 25px;
-            padding: 20px;
-            background: #f0f0f0;
-            border-radius: 10px;
-        }
+    button:hover {
+      opacity: 0.9;
+    }
 
-        .resultado p {
-            margin: 10px 0;
-        }
+    .resultado {
+      margin-top: 25px;
+      font-size: 28px;
+      font-weight: bold;
+      display: none;
+    }
 
-        .total {
-            font-size: 24px;
-            font-weight: bold;
-        }
-    </style>
+    .error {
+      margin-top: 15px;
+      color: #d00000;
+      font-size: 15px;
+      display: none;
+    }
+  </style>
 </head>
 
 <body>
 
-<div class="contenedor">
+  <div class="cotizador">
 
-    <h1>💰 Mi Cotizador</h1>
+    <h1>🍎🍀SAMHANI COTIZADOR🍀🍎</h1>
 
-    <label>Precio del producto (USD)</label>
-    <input type="number" id="producto" placeholder="Ej: 100">
+    <input
+      type="number"
+      id="precioUSD"
+      class="input-usd"
+      placeholder="Precio en USD"
+      min="0"
+      step="0.01"
+    >
 
-    <label>Cantidad</label>
-    <input type="number" id="cantidad" value="1" min="1">
+    <button onclick="cotizar()">
+      COTIZAR
+    </button>
 
-    <label>Envío (USD)</label>
-    <input type="number" id="envio" placeholder="Ej: 20">
-
-    <label>Otros gastos (USD)</label>
-    <input type="number" id="otros" placeholder="Ej: 10">
-
-    <button onclick="calcular()">Calcular</button>
-
-    <div class="resultado">
-
-        <p>
-            Productos: USD
-            <span id="subtotal">0.00</span>
-        </p>
-
-        <p>
-            Envío: USD
-            <span id="resultadoEnvio">0.00</span>
-        </p>
-
-        <p>
-            Otros gastos: USD
-            <span id="resultadoOtros">0.00</span>
-        </p>
-
-        <p class="total">
-            TOTAL: USD
-            <span id="total">0.00</span>
-        </p>
-
-        <p>
-            Precio por unidad: USD
-            <span id="porUnidad">0.00</span>
-        </p>
-
+    <div id="error" class="error">
+      Ingresá un precio válido.
     </div>
 
-</div>
+    <div id="resultado" class="resultado"></div>
 
-<script>
+  </div>
 
-function calcular() {
+  <script>
+    function cotizar() {
 
-    let producto = parseFloat(document.getElementById("producto").value) || 0;
-    let cantidad = parseFloat(document.getElementById("cantidad").value) || 1;
-    let envio = parseFloat(document.getElementById("envio").value) || 0;
-    let otros = parseFloat(document.getElementById("otros").value) || 0;
+      const precio = parseFloat(
+        document.getElementById("precioUSD").value
+      );
 
-    let subtotal = producto * cantidad;
+      const fees = 3.50;
+      const dolar = 1530;
 
-    let total = subtotal + envio + otros;
+      const resultado = document.getElementById("resultado");
+      const error = document.getElementById("error");
 
-    let porUnidad = total / cantidad;
+      if (isNaN(precio) || precio <= 0) {
+        resultado.style.display = "none";
+        error.style.display = "block";
+        return;
+      }
 
-    document.getElementById("subtotal").textContent = subtotal.toFixed(2);
-    document.getElementById("resultadoEnvio").textContent = envio.toFixed(2);
-    document.getElementById("resultadoOtros").textContent = otros.toFixed(2);
-    document.getElementById("total").textContent = total.toFixed(2);
-    document.getElementById("porUnidad").textContent = porUnidad.toFixed(2);
-}
+      error.style.display = "none";
 
-</script>
+      const totalUSD = precio + fees;
+      const totalARS = totalUSD * dolar;
+
+      resultado.innerHTML =
+        "$" + totalARS.toLocaleString("es-AR");
+
+      resultado.style.display = "block";
+    }
+  </script>
 
 </body>
 </html>
