@@ -2,20 +2,12 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>Samahani Cotizador</title>
 
-  <!-- TIPOGRAFÍA -->
-
   <link rel="preconnect" href="https://fonts.googleapis.com">
-
-  <link
-    rel="preconnect"
-    href="https://fonts.gstatic.com"
-    crossorigin
-  >
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
   <link
     href="https://fonts.googleapis.com/css2?family=Yeseva+One&display=swap"
@@ -23,10 +15,6 @@
   >
 
   <style>
-
-    /* =========================
-       GENERAL
-    ========================= */
 
     * {
       box-sizing: border-box;
@@ -40,12 +28,11 @@
 
     body {
       min-height: 100vh;
+      padding: 20px 15px 150px;
 
       display: flex;
       flex-direction: column;
       align-items: center;
-
-      padding: 25px 15px 180px;
 
       font-family: "Yeseva One", serif;
 
@@ -57,98 +44,78 @@
     }
 
 
-    /* =========================
-       DECORACIÓN SUPERIOR
-    ========================= */
+    /* DECORACIÓN SUPERIOR */
 
     .decoracion {
       width: 100%;
-      max-width: 900px;
+      max-width: 850px;
       margin-bottom: 10px;
     }
 
     .decoracion img {
+      display: block;
       width: 100%;
       height: auto;
-      display: block;
     }
 
 
-    /* =========================
-       CONTENEDOR GENERAL
-    ========================= */
+    /* CONTENEDOR GENERAL */
 
-    .cotizador-marco {
+    .apple-container {
       position: relative;
 
-      width: 100%;
-      max-width: 620px;
+      width: min(94vw, 760px);
+      aspect-ratio: 0.82;
 
-      margin: 20px auto 0;
+      margin-top: 30px;
 
       display: flex;
       justify-content: center;
+      align-items: center;
     }
 
 
-    /* =========================
-       MANZANA SVG
-    ========================= */
+    /* SVG DE LA MANZANA */
 
-    .manzana-fondo {
+    .apple-svg {
       position: absolute;
 
       width: 100%;
       height: 100%;
 
-      top: 0;
-      left: 0;
+      inset: 0;
 
       z-index: 1;
+
+      overflow: visible;
 
       pointer-events: none;
     }
 
-    .manzana-svg {
-      display: block;
 
-      width: 100%;
-      height: 100%;
-    }
-
-
-    /* =========================
-       CONTENIDO INTERIOR
-    ========================= */
+    /* CONTENEDOR DEL COTIZADOR */
 
     .cotizador {
       position: relative;
-
       z-index: 2;
 
-      width: 78%;
+      width: 68%;
 
-      margin-top: 105px;
-      margin-bottom: 75px;
+      margin-top: 7%;
 
-      padding: 65px 45px 55px;
+      padding: 70px 45px 55px;
 
-      background: rgba(255, 250, 238, 0.97);
+      background: #fff9e9;
 
-      border-radius:
-        38% 38% 42% 42%
-        /
-        24% 24% 45% 45%;
+      border-radius: 45px;
 
       box-shadow:
-        0 10px 25px rgba(0,0,0,0.12),
-        inset 0 0 25px rgba(130,90,30,0.08);
+        inset 0 0 25px rgba(120, 80, 30, 0.08),
+        0 10px 25px rgba(0, 0, 0, 0.10);
     }
 
 
-    /* =========================
-       INPUT
-    ========================= */
+    /* INPUT */
 
     .input-container {
       position: relative;
@@ -158,17 +125,17 @@
     .input-usd {
       width: 100%;
 
-      padding: 24px 70px 24px 25px;
+      padding: 22px 65px 22px 22px;
 
       border: 3px solid #9b2722;
       border-radius: 22px;
 
-      background: rgba(255,255,255,0.92);
+      background: white;
 
       color: #555;
 
       font-family: "Yeseva One", serif;
-      font-size: 28px;
+      font-size: 25px;
 
       outline: none;
     }
@@ -178,62 +145,52 @@
     }
 
     .input-usd:focus {
-      border-color: #4f8111;
+      border-color: #568a19;
 
       box-shadow:
         0 0 0 5px
-        rgba(79,129,17,0.12);
+        rgba(86, 138, 25, 0.12);
     }
 
 
-    /* =========================
-       SIGNO $
-    ========================= */
+    /* SIGNO $ */
 
     .simbolo {
       position: absolute;
 
+      right: 22px;
       top: 50%;
-      right: 25px;
 
       transform: translateY(-50%);
 
       color: #9b2722;
 
-      font-size: 45px;
+      font-size: 38px;
     }
 
 
-    /* =========================
-       BOTÓN
-    ========================= */
+    /* BOTÓN */
 
     button {
       width: 100%;
 
-      margin-top: 28px;
-      padding: 25px;
+      margin-top: 25px;
+      padding: 22px;
 
       border: none;
       border-radius: 22px;
 
-      background:
-        linear-gradient(
-          135deg,
-          #6c9f22,
-          #46770e
-        );
+      background: #568a19;
 
       color: white;
 
       font-family: "Yeseva One", serif;
-      font-size: 34px;
+      font-size: 29px;
 
       cursor: pointer;
 
       box-shadow:
-        inset 4px 4px 10px rgba(255,255,255,0.12),
-        0 7px 0 #315b09;
+        0 7px 0 #3d6810;
 
       transition: 0.2s;
     }
@@ -246,158 +203,141 @@
       transform: translateY(4px);
 
       box-shadow:
-        0 3px 0 #315b09;
+        0 3px 0 #3d6810;
     }
 
 
-    /* =========================
-       SEPARADOR
-    ========================= */
+    /* SEPARADOR */
 
     .separador {
       width: 100%;
 
-      margin: 45px 0 35px;
+      margin: 38px 0 30px;
 
       border-top: 2px dotted #a52822;
     }
 
 
-    /* =========================
-       RESULTADO
-    ========================= */
+    /* RESULTADO */
 
     .resultado {
       display: none;
 
       width: 100%;
-      min-height: 170px;
+      min-height: 145px;
 
-      padding: 30px 20px;
+      padding: 25px 15px;
 
       border: 2px dashed #a52822;
-      border-radius: 25px;
+      border-radius: 24px;
 
       background: rgba(255,255,255,0.35);
 
-      color: #941f1b;
+      color: #8f1e1b;
 
-      font-size: 58px;
+      font-size: 45px;
 
       text-align: center;
-
       align-content: center;
-
-      word-break: break-word;
     }
 
 
-    /* =========================
-       AVISO
-    ========================= */
+    /* AVISO */
 
     .aviso {
       display: none;
 
-      margin-top: 20px;
+      margin-top: 18px;
 
       color: #8d211d;
 
       font-family: Arial, sans-serif;
 
-      font-size: 14px;
+      font-size: 13px;
       font-weight: bold;
 
-      line-height: 1.6;
+      line-height: 1.5;
 
       text-align: center;
     }
 
 
-    /* =========================
-       ERROR
-    ========================= */
+    /* ERROR */
 
     .error {
       display: none;
 
-      margin-top: 20px;
+      margin-top: 18px;
 
       color: #941f1b;
 
       font-family: Arial, sans-serif;
 
-      font-size: 16px;
+      font-size: 15px;
       font-weight: bold;
 
       text-align: center;
     }
 
 
-    /* =========================
-       CELULAR
-    ========================= */
+    /* CELULAR */
 
     @media (max-width: 600px) {
 
       body {
-        padding: 15px 10px 150px;
+        padding: 12px 6px 120px;
       }
 
-      .decoracion {
-        margin-bottom: 5px;
-      }
-
-      .cotizador-marco {
-        width: 96vw;
+      .apple-container {
+        width: 98vw;
+        margin-top: 10px;
       }
 
       .cotizador {
-        width: 78%;
+        width: 67%;
 
-        margin-top: 78px;
-        margin-bottom: 50px;
+        padding: 50px 20px 38px;
 
-        padding: 48px 22px 40px;
+        border-radius: 32px;
       }
 
       .input-usd {
-        padding: 19px 55px 19px 18px;
+        padding: 18px 48px 18px 15px;
 
-        font-size: 21px;
+        font-size: 18px;
       }
 
       .simbolo {
-        right: 18px;
+        right: 15px;
+
+        font-size: 30px;
+      }
+
+      button {
+        padding: 18px;
+
+        font-size: 23px;
+      }
+
+      .resultado {
+        min-height: 120px;
 
         font-size: 34px;
       }
 
-      button {
-        padding: 20px;
-
-        font-size: 26px;
-      }
-
-      .resultado {
-        min-height: 140px;
-
-        font-size: 43px;
-      }
-
       .aviso {
-        font-size: 12px;
+        font-size: 11px;
       }
+
     }
 
   </style>
 </head>
 
-
 <body>
 
 
-  <!-- DECORACIÓN SUPERIOR -->
+  <!-- DECORACIÓN -->
 
   <div class="decoracion">
 
@@ -409,63 +349,300 @@
   </div>
 
 
-  <!-- MARCO MANZANA + COTIZADOR -->
+  <!-- MANZANA -->
 
-  <div class="cotizador-marco">
+  <div class="apple-container">
 
 
-    <!-- SILUETA EXTERIOR DE LA MANZANA -->
+    <!-- SILUETA SVG -->
 
-    <div class="manzana-fondo">
+    <svg
+      class="apple-svg"
+      viewBox="0 0 800 950"
+      xmlns="http://www.w3.org/2000/svg"
+    >
 
-      <svg
-        viewBox="0 0 600 700"
-        xmlns="http://www.w3.org/2000/svg"
-        class="manzana-svg"
-        preserveAspectRatio="none"
-      >
+      <defs>
 
-        <path
-          d="
-            M 300 115
+        <linearGradient
+          id="appleRed"
+          x1="0"
+          y1="0"
+          x2="1"
+          y2="1"
+        >
 
-            C 250 45,
-              105 55,
-              75 185
+          <stop
+            offset="0%"
+            stop-color="#f24b43"
+          />
 
-            C 40 335,
-              125 610,
-              300 650
+          <stop
+            offset="45%"
+            stop-color="#d91f1a"
+          />
 
-            C 475 610,
-              560 335,
-              525 185
+          <stop
+            offset="100%"
+            stop-color="#a80f0c"
+          />
 
-            C 495 55,
-              350 45,
-              300 115
+        </linearGradient>
 
-            Z
-          "
 
-          fill="#c91d1d"
+        <linearGradient
+          id="leafGreen"
+          x1="0"
+          y1="0"
+          x2="1"
+          y2="1"
+        >
 
-          stroke="#991313"
+          <stop
+            offset="0%"
+            stop-color="#91bd35"
+          />
 
-          stroke-width="12"
-        />
+          <stop
+            offset="100%"
+            stop-color="#477d13"
+          />
 
-      </svg>
+        </linearGradient>
 
-    </div>
+      </defs>
+
+
+      <!-- CUERPO DE LA MANZANA -->
+
+      <path
+
+        d="
+
+          M 400 180
+
+          C 330 100,
+            190 105,
+            115 205
+
+          C 55 285,
+            55 450,
+            105 610
+
+          C 145 745,
+            240 860,
+            350 885
+
+          C 370 890,
+            390 882,
+            400 860
+
+          C 410 882,
+            430 890,
+            450 885
+
+          C 560 860,
+            655 745,
+            695 610
+
+          C 745 450,
+            745 285,
+            685 205
+
+          C 610 105,
+            470 100,
+            400 180
+
+          Z
+
+        "
+
+        fill="url(#appleRed)"
+
+        stroke="#991410"
+
+        stroke-width="16"
+
+      />
+
+
+      <!-- SOMBRA INTERIOR -->
+
+      <path
+
+        d="
+
+          M 400 190
+
+          C 340 135,
+            230 135,
+            165 220
+
+          C 105 300,
+            115 460,
+            150 590
+
+          C 185 715,
+            275 820,
+            360 845
+
+        "
+
+        fill="none"
+
+        stroke="rgba(255,255,255,0.16)"
+
+        stroke-width="28"
+
+        stroke-linecap="round"
+
+      />
+
+
+      <!-- HENDIDURA SUPERIOR -->
+
+      <path
+
+        d="
+
+          M 400 180
+
+          C 370 130,
+            340 118,
+            305 135
+
+          C 350 105,
+            380 110,
+            400 145
+
+          C 420 110,
+            450 105,
+            495 135
+
+          C 460 118,
+            430 130,
+            400 180
+
+        "
+
+        fill="#a9110e"
+
+      />
+
+
+      <!-- TALLO -->
+
+      <path
+
+        d="
+
+          M 400 155
+
+          C 390 105,
+            410 65,
+            445 30
+
+        "
+
+        fill="none"
+
+        stroke="#693311"
+
+        stroke-width="26"
+
+        stroke-linecap="round"
+
+      />
+
+
+      <!-- HOJA -->
+
+      <path
+
+        d="
+
+          M 425 75
+
+          C 500 5,
+            630 25,
+            650 105
+
+          C 560 130,
+            485 115,
+            425 75
+
+          Z
+
+        "
+
+        fill="url(#leafGreen)"
+
+        stroke="#467514"
+
+        stroke-width="8"
+
+      />
+
+
+      <!-- NERVADURA HOJA -->
+
+      <path
+
+        d="
+
+          M 435 78
+
+          C 500 70,
+            560 70,
+            625 100
+
+        "
+
+        fill="none"
+
+        stroke="#3f7211"
+
+        stroke-width="6"
+
+        stroke-linecap="round"
+
+      />
+
+
+      <!-- HENDIDURA INFERIOR -->
+
+      <path
+
+        d="
+
+          M 350 885
+
+          C 375 850,
+            390 845,
+            400 860
+
+          C 410 845,
+            425 850,
+            450 885
+
+          C 430 905,
+            370 905,
+            350 885
+
+          Z
+
+        "
+
+        fill="#97100d"
+
+      />
+
+    </svg>
 
 
     <!-- COTIZADOR -->
 
     <div class="cotizador">
-
-
-      <!-- INPUT -->
 
       <div class="input-container">
 
@@ -483,8 +660,6 @@
       </div>
 
 
-      <!-- BOTÓN -->
-
       <button
         type="button"
         onclick="cotizar()"
@@ -493,12 +668,8 @@
       </button>
 
 
-      <!-- SEPARADOR -->
-
       <div class="separador"></div>
 
-
-      <!-- RESULTADO -->
 
       <div
         id="resultado"
@@ -506,20 +677,18 @@
       ></div>
 
 
-      <!-- AVISO -->
-
       <div
         id="aviso"
         class="aviso"
       >
+
         Los precios que se muestran solo incluyen fees.
         El envío a casilla japonesa se cobra por aparte,
         ya que depende del peso y la cantidad de items
         que entren en el envío.
+
       </div>
 
-
-      <!-- ERROR -->
 
       <div
         id="error"
@@ -527,7 +696,6 @@
       >
         Ingresá un precio válido.
       </div>
-
 
     </div>
 
@@ -539,9 +707,7 @@
     function cotizar() {
 
       const precio = parseFloat(
-        document
-          .getElementById("precioUSD")
-          .value
+        document.getElementById("precioUSD").value
       );
 
       const fees = 3.50;
@@ -570,11 +736,8 @@
       error.style.display = "none";
 
 
-      const totalUSD =
-        precio + fees;
-
-      const totalARS =
-        totalUSD * dolar;
+      const totalUSD = precio + fees;
+      const totalARS = totalUSD * dolar;
 
 
       resultado.innerHTML =
@@ -590,6 +753,7 @@
 
       resultado.style.display = "block";
       aviso.style.display = "block";
+
     }
 
 
