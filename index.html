@@ -1,20 +1,38 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
 
   <title>Samahani Cotizador</title>
 
+
+  <!-- FUENTE -->
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
 
   <link
     href="https://fonts.googleapis.com/css2?family=Yeseva+One&display=swap"
     rel="stylesheet"
   >
 
+
   <style>
+
+    /* =========================
+       CONFIGURACIÓN GENERAL
+    ========================= */
 
     * {
       box-sizing: border-box;
@@ -24,320 +42,506 @@
     body {
       margin: 0;
       padding: 0;
+      min-height: 100%;
     }
 
     body {
+
       min-height: 100vh;
-      padding: 20px 15px 150px;
 
       display: flex;
       flex-direction: column;
       align-items: center;
 
+      padding: 0 15px 150px;
+
       font-family: "Yeseva One", serif;
 
       background-image: url("fondo.png");
+
       background-size: cover;
       background-position: center top;
       background-repeat: no-repeat;
       background-attachment: fixed;
+
     }
 
 
-    /* DECORACIÓN SUPERIOR */
+    /* =========================
+       IMAGEN DE DECORACIÓN
+    ========================= */
 
     .decoracion {
+
       width: 100%;
-      max-width: 850px;
+      max-width: 1000px;
+
       margin-bottom: 10px;
+
     }
 
     .decoracion img {
+
       display: block;
+
       width: 100%;
       height: auto;
+
     }
 
 
-    /* CONTENEDOR GENERAL */
+    /* =========================
+       CONTENEDOR MANZANA
+    ========================= */
 
     .apple-container {
+
       position: relative;
 
-      width: min(94vw, 760px);
-      aspect-ratio: 0.82;
+      width: min(96vw, 1100px);
 
-      margin-top: 30px;
+      /* Hace que la manzana sea
+         ancha y no demasiado alta */
+
+      aspect-ratio: 1.12 / 1;
+
+      margin-top: 10px;
 
       display: flex;
       justify-content: center;
       align-items: center;
+
     }
 
 
-    /* SVG DE LA MANZANA */
+    /* =========================
+       SVG DE LA MANZANA
+    ========================= */
 
-    .apple-svg {
+    .apple-frame {
+
       position: absolute;
+
+      inset: 0;
 
       width: 100%;
       height: 100%;
 
-      inset: 0;
-
       z-index: 1;
+
+      pointer-events: none;
 
       overflow: visible;
 
-      pointer-events: none;
     }
 
 
-    /* CONTENEDOR DEL COTIZADOR */
+    /* =========================
+       COTIZADOR
+    ========================= */
 
     .cotizador {
+
       position: relative;
+
       z-index: 2;
 
-      width: 68%;
+      width: 63%;
 
       margin-top: 7%;
 
-      padding: 70px 45px 55px;
+      padding: 40px 10px 45px;
 
-      background: #fff9e9;
+      /*
+        IMPORTANTE:
+        No tiene fondo propio.
+        El fondo crema es el interior
+        de la manzana SVG.
+      */
 
-      border-radius: 45px;
+      background: transparent;
 
-      box-shadow:
-        inset 0 0 25px rgba(120, 80, 30, 0.08),
-        0 10px 25px rgba(0, 0, 0, 0.10);
+      text-align: center;
+
     }
 
 
-    /* INPUT */
+    /* =========================
+       INPUT
+    ========================= */
 
     .input-container {
+
       position: relative;
+
       width: 100%;
+
     }
 
     .input-usd {
+
       width: 100%;
 
-      padding: 22px 65px 22px 22px;
+      padding:
+        25px
+        75px
+        25px
+        28px;
 
-      border: 3px solid #9b2722;
+      border: 3px solid #9f2924;
+
       border-radius: 22px;
 
-      background: white;
+      background: rgba(255,255,255,0.75);
 
       color: #555;
 
       font-family: "Yeseva One", serif;
-      font-size: 25px;
+
+      font-size: 30px;
 
       outline: none;
+
     }
 
     .input-usd::placeholder {
-      color: #999;
+
+      color: #8c8c8c;
+
+      opacity: 1;
+
     }
 
     .input-usd:focus {
-      border-color: #568a19;
+
+      border-color: #5b8917;
 
       box-shadow:
         0 0 0 5px
-        rgba(86, 138, 25, 0.12);
+        rgba(91,137,23,0.12);
+
     }
 
 
-    /* SIGNO $ */
+    /* =========================
+       SIGNO $
+    ========================= */
 
     .simbolo {
+
       position: absolute;
 
-      right: 22px;
       top: 50%;
+      right: 28px;
 
       transform: translateY(-50%);
 
-      color: #9b2722;
+      color: #96241f;
 
-      font-size: 38px;
+      font-size: 45px;
+
+      pointer-events: none;
+
     }
 
 
-    /* BOTÓN */
+    /* =========================
+       BOTÓN
+    ========================= */
 
     button {
+
       width: 100%;
 
-      margin-top: 25px;
-      padding: 22px;
+      margin-top: 28px;
+
+      padding: 25px;
 
       border: none;
+
       border-radius: 22px;
 
-      background: #568a19;
+      background:
+        linear-gradient(
+          135deg,
+          #5d9118,
+          #3f700b
+        );
 
       color: white;
 
       font-family: "Yeseva One", serif;
-      font-size: 29px;
+
+      font-size: 34px;
 
       cursor: pointer;
 
       box-shadow:
-        0 7px 0 #3d6810;
+        0 7px 0 #315908,
+        inset 0 1px 2px rgba(255,255,255,0.18);
 
-      transition: 0.2s;
+      transition:
+        transform 0.15s ease,
+        box-shadow 0.15s ease;
+
     }
 
     button:hover {
+
       transform: translateY(-2px);
+
+      box-shadow:
+        0 9px 0 #315908,
+        inset 0 1px 2px rgba(255,255,255,0.18);
+
     }
 
     button:active {
+
       transform: translateY(4px);
 
       box-shadow:
-        0 3px 0 #3d6810;
+        0 3px 0 #315908;
+
     }
 
 
-    /* SEPARADOR */
+    /* =========================
+       SEPARADOR
+    ========================= */
 
     .separador {
+
       width: 100%;
 
-      margin: 38px 0 30px;
+      margin: 42px 0 35px;
 
-      border-top: 2px dotted #a52822;
+      border-top:
+        2px dotted #a12b25;
+
     }
 
 
-    /* RESULTADO */
+    /* =========================
+       RESULTADO
+    ========================= */
 
     .resultado {
+
       display: none;
 
       width: 100%;
-      min-height: 145px;
 
-      padding: 25px 15px;
+      min-height: 170px;
 
-      border: 2px dashed #a52822;
-      border-radius: 24px;
+      padding: 30px 20px;
 
-      background: rgba(255,255,255,0.35);
+      border:
+        2px dashed #a52b25;
 
-      color: #8f1e1b;
+      border-radius: 28px;
 
-      font-size: 45px;
+      background:
+        rgba(255,255,255,0.22);
+
+      color: #94251f;
+
+      font-size: 56px;
 
       text-align: center;
+
       align-content: center;
+
+      word-break: break-word;
+
     }
 
 
-    /* AVISO */
+    /* =========================
+       AVISO
+    ========================= */
 
     .aviso {
+
       display: none;
 
-      margin-top: 18px;
+      width: 100%;
 
-      color: #8d211d;
+      margin-top: 25px;
+
+      padding: 0 20px;
+
+      color: #8f3029;
 
       font-family: Arial, sans-serif;
 
-      font-size: 13px;
+      font-size: 16px;
+
       font-weight: bold;
 
-      line-height: 1.5;
+      line-height: 1.55;
 
       text-align: center;
+
     }
 
 
-    /* ERROR */
+    /* =========================
+       ERROR
+    ========================= */
 
     .error {
+
       display: none;
 
-      margin-top: 18px;
+      margin-top: 22px;
 
-      color: #941f1b;
+      color: #a0201b;
 
       font-family: Arial, sans-serif;
 
-      font-size: 15px;
+      font-size: 17px;
+
       font-weight: bold;
 
       text-align: center;
+
     }
 
 
-    /* CELULAR */
+    /* =========================
+       CELULAR
+    ========================= */
 
-    @media (max-width: 600px) {
+    @media (max-width: 700px) {
 
       body {
-        padding: 12px 6px 120px;
+
+        padding:
+          0
+          5px
+          100px;
+
       }
+
 
       .apple-container {
-        width: 98vw;
-        margin-top: 10px;
+
+        width: 100vw;
+
+        aspect-ratio: 0.92 / 1;
+
+        margin-top: 0;
+
       }
+
 
       .cotizador {
-        width: 67%;
 
-        padding: 50px 20px 38px;
+        width: 62%;
 
-        border-radius: 32px;
+        margin-top: 8%;
+
+        padding:
+          35px
+          0
+          30px;
+
       }
+
 
       .input-usd {
-        padding: 18px 48px 18px 15px;
 
-        font-size: 18px;
+        padding:
+          18px
+          52px
+          18px
+          16px;
+
+        font-size: 20px;
+
+        border-radius: 18px;
+
       }
+
 
       .simbolo {
-        right: 15px;
 
-        font-size: 30px;
+        right: 16px;
+
+        font-size: 31px;
+
       }
 
+
       button {
+
+        margin-top: 20px;
+
         padding: 18px;
 
         font-size: 23px;
+
+        border-radius: 18px;
+
       }
+
+
+      .separador {
+
+        margin:
+          28px
+          0
+          25px;
+
+      }
+
 
       .resultado {
-        min-height: 120px;
 
-        font-size: 34px;
+        min-height: 125px;
+
+        padding: 20px 10px;
+
+        font-size: 37px;
+
+        border-radius: 20px;
+
       }
 
+
       .aviso {
-        font-size: 11px;
+
+        margin-top: 17px;
+
+        padding: 0 4px;
+
+        font-size: 10px;
+
+        line-height: 1.5;
+
+      }
+
+
+      .error {
+
+        font-size: 12px;
+
       }
 
     }
 
   </style>
+
 </head>
+
 
 <body>
 
 
-  <!-- DECORACIÓN -->
+  <!-- =========================
+       DECORACIÓN SUPERIOR
+  ========================== -->
 
   <div class="decoracion">
 
@@ -349,49 +553,91 @@
   </div>
 
 
-  <!-- MANZANA -->
+
+  <!-- =========================
+       MANZANA
+  ========================== -->
 
   <div class="apple-container">
 
 
-    <!-- SILUETA SVG -->
+    <!-- =====================
+         SILUETA DE MANZANA
+    ====================== -->
 
     <svg
-      class="apple-svg"
-      viewBox="0 0 800 950"
+      class="apple-frame"
+
+      viewBox="0 0 1000 900"
+
       xmlns="http://www.w3.org/2000/svg"
+
+      preserveAspectRatio="xMidYMid meet"
     >
+
 
       <defs>
 
+
+        <!-- DEGRADADO DEL BORDE ROJO -->
+
         <linearGradient
-          id="appleRed"
+          id="redApple"
           x1="0"
           y1="0"
-          x2="1"
+          x2="0"
           y2="1"
         >
 
           <stop
             offset="0%"
-            stop-color="#f24b43"
+            stop-color="#f2352f"
           />
 
           <stop
             offset="45%"
-            stop-color="#d91f1a"
+            stop-color="#df1712"
           />
 
           <stop
             offset="100%"
-            stop-color="#a80f0c"
+            stop-color="#c5100d"
           />
 
         </linearGradient>
 
 
+        <!-- DEGRADADO CREMA -->
+
+        <radialGradient
+          id="creamInside"
+          cx="50%"
+          cy="45%"
+          r="70%"
+        >
+
+          <stop
+            offset="0%"
+            stop-color="#fffdf5"
+          />
+
+          <stop
+            offset="70%"
+            stop-color="#fff8e6"
+          />
+
+          <stop
+            offset="100%"
+            stop-color="#f6e8c9"
+          />
+
+        </radialGradient>
+
+
+        <!-- HOJA -->
+
         <linearGradient
-          id="leafGreen"
+          id="greenLeaf"
           x1="0"
           y1="0"
           x2="1"
@@ -400,97 +646,156 @@
 
           <stop
             offset="0%"
-            stop-color="#91bd35"
+            stop-color="#9bc943"
           />
 
           <stop
             offset="100%"
-            stop-color="#477d13"
+            stop-color="#477b11"
           />
 
         </linearGradient>
 
+
+        <!-- SOMBRA -->
+
+        <filter
+          id="shadow"
+          x="-20%"
+          y="-20%"
+          width="140%"
+          height="140%"
+        >
+
+          <feDropShadow
+            dx="0"
+            dy="12"
+            stdDeviation="12"
+            flood-color="#5f211b"
+            flood-opacity="0.25"
+          />
+
+        </filter>
+
+
       </defs>
 
 
-      <!-- CUERPO DE LA MANZANA -->
+
+      <!-- =====================
+           CUERPO DE MANZANA
+
+           FONDO CREMA
+           + BORDE ROJO GRUESO
+      ====================== -->
 
       <path
 
         d="
 
-          M 400 180
+          M 500 180
 
-          C 330 100,
-            190 105,
-            115 205
+          C 430 125,
+            355 125,
+            275 155
 
-          C 55 285,
-            55 450,
-            105 610
+          C 155 200,
+            90 330,
+            110 500
 
-          C 145 745,
-            240 860,
-            350 885
+          C 125 645,
+            200 770,
+            330 810
 
-          C 370 890,
-            390 882,
-            400 860
+          C 400 832,
+            455 802,
+            500 790
 
-          C 410 882,
-            430 890,
-            450 885
+          C 545 802,
+            600 832,
+            670 810
 
-          C 560 860,
-            655 745,
-            695 610
+          C 800 770,
+            875 645,
+            890 500
 
-          C 745 450,
-            745 285,
-            685 205
+          C 910 330,
+            845 200,
+            725 155
 
-          C 610 105,
-            470 100,
-            400 180
+          C 645 125,
+            570 125,
+            500 180
 
           Z
 
         "
 
-        fill="url(#appleRed)"
+        fill="url(#creamInside)"
 
-        stroke="#991410"
+        stroke="url(#redApple)"
 
-        stroke-width="16"
+        stroke-width="48"
+
+        stroke-linejoin="round"
+
+        filter="url(#shadow)"
 
       />
 
 
-      <!-- SOMBRA INTERIOR -->
+
+      <!-- =====================
+           BRILLO SUAVE
+      ====================== -->
 
       <path
 
         d="
 
-          M 400 190
+          M 500 180
 
-          C 340 135,
-            230 135,
-            165 220
+          C 430 125,
+            355 125,
+            275 155
 
-          C 105 300,
-            115 460,
-            150 590
-
-          C 185 715,
-            275 820,
-            360 845
+          C 155 200,
+            90 330,
+            110 500
 
         "
 
         fill="none"
 
-        stroke="rgba(255,255,255,0.16)"
+        stroke="rgba(255,255,255,0.30)"
+
+        stroke-width="10"
+
+        stroke-linecap="round"
+
+      />
+
+
+
+      <!-- =====================
+           TALLO
+      ====================== -->
+
+      <path
+
+        d="
+
+          M 500 160
+
+          C 495 105,
+            510 70,
+            545 32
+
+        "
+
+        fill="none"
+
+        stroke="#6c3515"
 
         stroke-width="28"
 
@@ -499,108 +804,55 @@
       />
 
 
-      <!-- HENDIDURA SUPERIOR -->
+
+      <!-- =====================
+           HOJA
+      ====================== -->
 
       <path
 
         d="
 
-          M 400 180
+          M 525 105
 
-          C 370 130,
-            340 118,
-            305 135
+          C 590 22,
+            735 20,
+            790 75
 
-          C 350 105,
-            380 110,
-            400 145
-
-          C 420 110,
-            450 105,
-            495 135
-
-          C 460 118,
-            430 130,
-            400 180
-
-        "
-
-        fill="#a9110e"
-
-      />
-
-
-      <!-- TALLO -->
-
-      <path
-
-        d="
-
-          M 400 155
-
-          C 390 105,
-            410 65,
-            445 30
-
-        "
-
-        fill="none"
-
-        stroke="#693311"
-
-        stroke-width="26"
-
-        stroke-linecap="round"
-
-      />
-
-
-      <!-- HOJA -->
-
-      <path
-
-        d="
-
-          M 425 75
-
-          C 500 5,
-            630 25,
-            650 105
-
-          C 560 130,
-            485 115,
-            425 75
+          C 715 140,
+            605 155,
+            525 105
 
           Z
 
         "
 
-        fill="url(#leafGreen)"
+        fill="url(#greenLeaf)"
 
-        stroke="#467514"
+        stroke="#426f10"
 
         stroke-width="8"
 
       />
 
 
-      <!-- NERVADURA HOJA -->
+      <!-- NERVADURA -->
 
       <path
 
         d="
 
-          M 435 78
+          M 535 105
 
-          C 500 70,
-            560 70,
-            625 100
+          C 610 95,
+            675 95,
+            760 78
 
         "
 
         fill="none"
 
-        stroke="#3f7211"
+        stroke="#426f10"
 
         stroke-width="6"
 
@@ -609,50 +861,35 @@
       />
 
 
-      <!-- HENDIDURA INFERIOR -->
-
-      <path
-
-        d="
-
-          M 350 885
-
-          C 375 850,
-            390 845,
-            400 860
-
-          C 410 845,
-            425 850,
-            450 885
-
-          C 430 905,
-            370 905,
-            350 885
-
-          Z
-
-        "
-
-        fill="#97100d"
-
-      />
-
     </svg>
 
 
-    <!-- COTIZADOR -->
 
-    <div class="cotizador">
+    <!-- =========================
+         COTIZADOR
+    ========================== -->
+
+    <main class="cotizador">
+
+
+      <!-- INPUT -->
 
       <div class="input-container">
 
         <input
+
           type="number"
+
           id="precioUSD"
+
           class="input-usd"
+
           placeholder="Precio en USD"
+
           min="0"
+
           step="0.01"
+
         >
 
         <span class="simbolo">$</span>
@@ -660,22 +897,36 @@
       </div>
 
 
+
+      <!-- BOTÓN -->
+
       <button
         type="button"
         onclick="cotizar()"
       >
+
         COTIZAR
+
       </button>
 
 
+
+      <!-- SEPARADOR -->
+
       <div class="separador"></div>
 
+
+
+      <!-- RESULTADO -->
 
       <div
         id="resultado"
         class="resultado"
       ></div>
 
+
+
+      <!-- AVISO -->
 
       <div
         id="aviso"
@@ -690,87 +941,163 @@
       </div>
 
 
+
+      <!-- ERROR -->
+
       <div
         id="error"
         class="error"
       >
+
         Ingresá un precio válido.
+
       </div>
 
-    </div>
+
+    </main>
+
 
   </div>
 
 
+
+  <!-- =========================
+       JAVASCRIPT
+  ========================== -->
+
   <script>
+
 
     function cotizar() {
 
+
       const precio = parseFloat(
-        document.getElementById("precioUSD").value
+
+        document
+          .getElementById("precioUSD")
+          .value
+
       );
 
+
       const fees = 3.50;
+
       const dolar = 1530;
 
+
       const resultado =
-        document.getElementById("resultado");
+
+        document.getElementById(
+          "resultado"
+        );
+
 
       const aviso =
-        document.getElementById("aviso");
+
+        document.getElementById(
+          "aviso"
+        );
+
 
       const error =
-        document.getElementById("error");
+
+        document.getElementById(
+          "error"
+        );
 
 
-      if (isNaN(precio) || precio <= 0) {
+      /* VALIDACIÓN */
+
+
+      if (
+        isNaN(precio)
+        ||
+        precio <= 0
+      ) {
+
 
         resultado.style.display = "none";
+
         aviso.style.display = "none";
+
         error.style.display = "block";
 
+
         return;
+
       }
 
 
       error.style.display = "none";
 
 
-      const totalUSD = precio + fees;
-      const totalARS = totalUSD * dolar;
+      /* CÁLCULO */
+
+
+      const totalUSD =
+        precio + fees;
+
+
+      const totalARS =
+        totalUSD * dolar;
+
+
+      /* MOSTRAR RESULTADO */
 
 
       resultado.innerHTML =
+
         "$ " +
+
         totalARS.toLocaleString(
+
           "es-AR",
+
           {
+
             minimumFractionDigits: 0,
+
             maximumFractionDigits: 0
+
           }
+
         );
 
 
       resultado.style.display = "block";
+
       aviso.style.display = "block";
 
+
     }
+
+
+    /* COTIZAR CON ENTER */
 
 
     document
       .getElementById("precioUSD")
       .addEventListener(
+
         "keydown",
+
         function(event) {
 
-          if (event.key === "Enter") {
+          if (
+            event.key === "Enter"
+          ) {
+
             cotizar();
+
           }
 
         }
+
       );
 
+
   </script>
+
 
 </body>
 </html>
