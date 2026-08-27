@@ -3,13 +3,9 @@
 <head>
   <meta charset="UTF-8">
 
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>Samahani Cotizador</title>
-
 
   <!-- TIPOGRAFÍA -->
 
@@ -26,27 +22,23 @@
     rel="stylesheet"
   >
 
-
   <style>
 
     /* =========================
-       RESETEO GENERAL
+       GENERAL
     ========================= */
 
     * {
       box-sizing: border-box;
     }
 
-
-    html {
+    html,
+    body {
       margin: 0;
       padding: 0;
     }
 
-
     body {
-
-      margin: 0;
       min-height: 100vh;
 
       display: flex;
@@ -55,24 +47,13 @@
 
       padding: 25px 15px 180px;
 
-      font-family:
-        "Yeseva One",
-        serif;
+      font-family: "Yeseva One", serif;
 
-
-      /* FONDO */
-
-      background-image:
-        url("fondo.png");
-
+      background-image: url("fondo.png");
       background-size: cover;
-
       background-position: center top;
-
       background-repeat: no-repeat;
-
       background-attachment: fixed;
-
     }
 
 
@@ -81,102 +62,87 @@
     ========================= */
 
     .decoracion {
-
       width: 100%;
-
       max-width: 900px;
-
-      margin-bottom: 35px;
-
+      margin-bottom: 10px;
     }
 
-
     .decoracion img {
-
       width: 100%;
-
       height: auto;
-
       display: block;
-
     }
 
 
     /* =========================
-       CONTENEDOR PRINCIPAL
-
-       ESTE ES EL LUGAR DONDE
-       VAMOS A CONSTRUIR DESPUÉS
-       EL MARCO DE MANZANA
+       CONTENEDOR GENERAL
     ========================= */
 
     .cotizador-marco {
-
       position: relative;
 
       width: 100%;
-
       max-width: 620px;
 
-      padding: 12px;
+      margin: 20px auto 0;
 
+      display: flex;
+      justify-content: center;
     }
 
 
     /* =========================
-       PANEL INTERIOR
+       MANZANA SVG
+    ========================= */
 
-       POR AHORA ES SIMPLE.
-       NO HAY MANZANA.
+    .manzana-fondo {
+      position: absolute;
+
+      width: 100%;
+      height: 100%;
+
+      top: 0;
+      left: 0;
+
+      z-index: 1;
+
+      pointer-events: none;
+    }
+
+    .manzana-svg {
+      display: block;
+
+      width: 100%;
+      height: 100%;
+    }
+
+
+    /* =========================
+       CONTENIDO INTERIOR
     ========================= */
 
     .cotizador {
-
-      width: 100%;
-
-      padding:
-
-        55px
-        45px
-        50px;
-
-
-      background:
-
-        rgba(
-          255,
-          250,
-          238,
-          0.96
-        );
-
-
-      border:
-
-        4px solid
-        #a52520;
-
-
-      border-radius:
-
-        45px;
-
-
-      box-shadow:
-
-        0
-        15px
-        35px
-        rgba(
-          0,
-          0,
-          0,
-          0.18
-        );
-
-
       position: relative;
 
+      z-index: 2;
+
+      width: 78%;
+
+      margin-top: 105px;
+      margin-bottom: 75px;
+
+      padding: 65px 45px 55px;
+
+      background: rgba(255, 250, 238, 0.97);
+
+      border-radius:
+        38% 38% 42% 42%
+        /
+        24% 24% 45% 45%;
+
+      box-shadow:
+        0 10px 25px rgba(0,0,0,0.12),
+        inset 0 0 25px rgba(130,90,30,0.08);
     }
 
 
@@ -185,98 +151,38 @@
     ========================= */
 
     .input-container {
-
       position: relative;
-
       width: 100%;
-
     }
-
 
     .input-usd {
-
       width: 100%;
 
-      padding:
+      padding: 24px 70px 24px 25px;
 
-        24px
-        70px
-        24px
-        25px;
+      border: 3px solid #9b2722;
+      border-radius: 22px;
 
+      background: rgba(255,255,255,0.92);
 
-      border:
+      color: #555;
 
-        3px solid
-        #9b2722;
+      font-family: "Yeseva One", serif;
+      font-size: 28px;
 
-
-      border-radius:
-
-        22px;
-
-
-      background:
-
-        rgba(
-          255,
-          255,
-          255,
-          0.92
-        );
-
-
-      color:
-        #555;
-
-
-      font-family:
-        "Yeseva One",
-        serif;
-
-
-      font-size:
-        28px;
-
-
-      text-align:
-        left;
-
-
-      outline:
-        none;
-
+      outline: none;
     }
-
 
     .input-usd::placeholder {
-
-      color:
-        #999;
-
+      color: #999;
     }
 
-
     .input-usd:focus {
-
-      border-color:
-        #4f8111;
-
+      border-color: #4f8111;
 
       box-shadow:
-
-        0
-        0
-        0
-        5px
-
-        rgba(
-          79,
-          129,
-          17,
-          0.12
-        );
-
+        0 0 0 5px
+        rgba(79,129,17,0.12);
     }
 
 
@@ -285,129 +191,62 @@
     ========================= */
 
     .simbolo {
+      position: absolute;
 
-      position:
-        absolute;
+      top: 50%;
+      right: 25px;
 
-      top:
-        50%;
+      transform: translateY(-50%);
 
-      right:
-        25px;
+      color: #9b2722;
 
-
-      transform:
-        translateY(-50%);
-
-
-      color:
-        #9b2722;
-
-
-      font-size:
-        45px;
-
+      font-size: 45px;
     }
 
 
     /* =========================
-       BOTÓN VERDE
+       BOTÓN
     ========================= */
 
     button {
+      width: 100%;
 
-      width:
-        100%;
+      margin-top: 28px;
+      padding: 25px;
 
-
-      margin-top:
-        28px;
-
-
-      padding:
-        25px;
-
-
-      border:
-        none;
-
-
-      border-radius:
-        22px;
-
+      border: none;
+      border-radius: 22px;
 
       background:
-
         linear-gradient(
           135deg,
           #6c9f22,
           #46770e
         );
 
+      color: white;
 
-      color:
-        white;
+      font-family: "Yeseva One", serif;
+      font-size: 34px;
 
-
-      font-family:
-        "Yeseva One",
-        serif;
-
-
-      font-size:
-        34px;
-
-
-      cursor:
-        pointer;
-
+      cursor: pointer;
 
       box-shadow:
+        inset 4px 4px 10px rgba(255,255,255,0.12),
+        0 7px 0 #315b09;
 
-        inset
-        4px
-        4px
-        10px
-        rgba(
-          255,
-          255,
-          255,
-          0.12
-        ),
-
-        0
-        7px
-        0
-        #315b09;
-
-
-      transition:
-        0.2s;
-
+      transition: 0.2s;
     }
-
 
     button:hover {
-
-      transform:
-        translateY(-2px);
-
+      transform: translateY(-2px);
     }
 
-
     button:active {
-
-      transform:
-        translateY(4px);
-
+      transform: translateY(4px);
 
       box-shadow:
-
-        0
-        3px
-        0
-        #315b09;
-
+        0 3px 0 #315b09;
     }
 
 
@@ -416,23 +255,11 @@
     ========================= */
 
     .separador {
+      width: 100%;
 
-      width:
-        100%;
+      margin: 45px 0 35px;
 
-
-      margin:
-
-        45px
-        0
-        35px;
-
-
-      border-top:
-
-        2px dotted
-        #a52822;
-
+      border-top: 2px dotted #a52822;
     }
 
 
@@ -441,63 +268,27 @@
     ========================= */
 
     .resultado {
+      display: none;
 
-      display:
-        none;
+      width: 100%;
+      min-height: 170px;
 
+      padding: 30px 20px;
 
-      width:
-        100%;
+      border: 2px dashed #a52822;
+      border-radius: 25px;
 
+      background: rgba(255,255,255,0.35);
 
-      min-height:
-        170px;
+      color: #941f1b;
 
+      font-size: 58px;
 
-      padding:
-        30px
-        20px;
+      text-align: center;
 
+      align-content: center;
 
-      border:
-
-        2px dashed
-        #a52822;
-
-
-      border-radius:
-        25px;
-
-
-      background:
-
-        rgba(
-          255,
-          255,
-          255,
-          0.35
-        );
-
-
-      color:
-        #941f1b;
-
-
-      font-size:
-        58px;
-
-
-      text-align:
-        center;
-
-
-      align-content:
-        center;
-
-
-      word-break:
-        break-word;
-
+      word-break: break-word;
     }
 
 
@@ -506,39 +297,20 @@
     ========================= */
 
     .aviso {
+      display: none;
 
-      display:
-        none;
+      margin-top: 20px;
 
+      color: #8d211d;
 
-      margin-top:
-        20px;
+      font-family: Arial, sans-serif;
 
+      font-size: 14px;
+      font-weight: bold;
 
-      color:
-        #8d211d;
+      line-height: 1.6;
 
-
-      font-family:
-        Arial,
-        sans-serif;
-
-
-      font-size:
-        14px;
-
-
-      font-weight:
-        bold;
-
-
-      line-height:
-        1.6;
-
-
-      text-align:
-        center;
-
+      text-align: center;
     }
 
 
@@ -547,152 +319,85 @@
     ========================= */
 
     .error {
+      display: none;
 
-      display:
-        none;
+      margin-top: 20px;
 
+      color: #941f1b;
 
-      margin-top:
-        20px;
+      font-family: Arial, sans-serif;
 
+      font-size: 16px;
+      font-weight: bold;
 
-      color:
-        #941f1b;
-
-
-      font-family:
-        Arial,
-        sans-serif;
-
-
-      font-size:
-        16px;
-
-
-      font-weight:
-        bold;
-
-
-      text-align:
-        center;
-
+      text-align: center;
     }
 
 
     /* =========================
-       VERSIÓN CELULAR
+       CELULAR
     ========================= */
 
-    @media
-    (max-width: 600px) {
-
+    @media (max-width: 600px) {
 
       body {
-
-        padding:
-
-          15px
-          10px
-          150px;
-
+        padding: 15px 10px 150px;
       }
-
 
       .decoracion {
-
-        margin-bottom:
-          25px;
-
+        margin-bottom: 5px;
       }
 
+      .cotizador-marco {
+        width: 96vw;
+      }
 
       .cotizador {
+        width: 78%;
 
-        padding:
+        margin-top: 78px;
+        margin-bottom: 50px;
 
-          40px
-          22px
-          35px;
-
-
-        border-radius:
-          35px;
-
+        padding: 48px 22px 40px;
       }
-
 
       .input-usd {
+        padding: 19px 55px 19px 18px;
 
-        padding:
-
-          19px
-          55px
-          19px
-          18px;
-
-
-        font-size:
-          21px;
-
+        font-size: 21px;
       }
-
 
       .simbolo {
+        right: 18px;
 
-        right:
-          18px;
-
-
-        font-size:
-          34px;
-
+        font-size: 34px;
       }
-
 
       button {
+        padding: 20px;
 
-        padding:
-          20px;
-
-
-        font-size:
-          26px;
-
+        font-size: 26px;
       }
-
 
       .resultado {
+        min-height: 140px;
 
-        min-height:
-          140px;
-
-
-        font-size:
-          43px;
-
+        font-size: 43px;
       }
-
 
       .aviso {
-
-        font-size:
-          12px;
-
+        font-size: 12px;
       }
-
     }
 
   </style>
-
 </head>
 
 
 <body>
 
 
-  <!-- =========================
-       DECORACIÓN SUPERIOR
-    ========================= -->
+  <!-- DECORACIÓN SUPERIOR -->
 
   <div class="decoracion">
 
@@ -704,17 +409,58 @@
   </div>
 
 
-
-  <!-- =========================
-       MARCO PRINCIPAL
-
-       DESDE AQUÍ VAMOS A ARMAR
-       LA FORMA DE LA MANZANA
-       EN EL SIGUIENTE PASO
-    ========================= -->
+  <!-- MARCO MANZANA + COTIZADOR -->
 
   <div class="cotizador-marco">
 
+
+    <!-- SILUETA EXTERIOR DE LA MANZANA -->
+
+    <div class="manzana-fondo">
+
+      <svg
+        viewBox="0 0 600 700"
+        xmlns="http://www.w3.org/2000/svg"
+        class="manzana-svg"
+        preserveAspectRatio="none"
+      >
+
+        <path
+          d="
+            M 300 115
+
+            C 250 45,
+              105 55,
+              75 185
+
+            C 40 335,
+              125 610,
+              300 650
+
+            C 475 610,
+              560 335,
+              525 185
+
+            C 495 55,
+              350 45,
+              300 115
+
+            Z
+          "
+
+          fill="#c91d1d"
+
+          stroke="#991313"
+
+          stroke-width="12"
+        />
+
+      </svg>
+
+    </div>
+
+
+    <!-- COTIZADOR -->
 
     <div class="cotizador">
 
@@ -724,28 +470,17 @@
       <div class="input-container">
 
         <input
-
           type="number"
-
           id="precioUSD"
-
           class="input-usd"
-
           placeholder="Precio en USD"
-
           min="0"
-
           step="0.01"
-
         >
 
-
-        <span class="simbolo">
-          $
-        </span>
+        <span class="simbolo">$</span>
 
       </div>
-
 
 
       <!-- BOTÓN -->
@@ -754,11 +489,8 @@
         type="button"
         onclick="cotizar()"
       >
-
         COTIZAR
-
       </button>
-
 
 
       <!-- SEPARADOR -->
@@ -766,50 +498,34 @@
       <div class="separador"></div>
 
 
-
       <!-- RESULTADO -->
 
       <div
-
         id="resultado"
-
         class="resultado"
-
       ></div>
-
 
 
       <!-- AVISO -->
 
       <div
-
         id="aviso"
-
         class="aviso"
-
       >
-
         Los precios que se muestran solo incluyen fees.
         El envío a casilla japonesa se cobra por aparte,
         ya que depende del peso y la cantidad de items
         que entren en el envío.
-
       </div>
-
 
 
       <!-- ERROR -->
 
       <div
-
         id="error"
-
         class="error"
-
       >
-
         Ingresá un precio válido.
-
       </div>
 
 
@@ -818,148 +534,77 @@
   </div>
 
 
-
   <script>
-
 
     function cotizar() {
 
-
       const precio = parseFloat(
-
         document
           .getElementById("precioUSD")
           .value
-
       );
 
-
-      /* VALORES DEL COTIZADOR */
-
       const fees = 3.50;
-
       const dolar = 1530;
 
-
       const resultado =
-
-        document
-          .getElementById("resultado");
-
+        document.getElementById("resultado");
 
       const aviso =
-
-        document
-          .getElementById("aviso");
-
+        document.getElementById("aviso");
 
       const error =
-
-        document
-          .getElementById("error");
+        document.getElementById("error");
 
 
-      /* VALIDACIÓN */
+      if (isNaN(precio) || precio <= 0) {
 
-      if (
-
-        isNaN(precio)
-
-        ||
-
-        precio <= 0
-
-      ) {
-
-
-        resultado.style.display =
-          "none";
-
-
-        aviso.style.display =
-          "none";
-
-
-        error.style.display =
-          "block";
-
+        resultado.style.display = "none";
+        aviso.style.display = "none";
+        error.style.display = "block";
 
         return;
-
       }
 
 
-      /* OCULTAR ERROR */
+      error.style.display = "none";
 
-      error.style.display =
-        "none";
-
-
-      /* CÁLCULO */
 
       const totalUSD =
         precio + fees;
-
 
       const totalARS =
         totalUSD * dolar;
 
 
-      /* MOSTRAR RESULTADO */
-
       resultado.innerHTML =
-
         "$ " +
-
         totalARS.toLocaleString(
-
           "es-AR",
-
           {
-
             minimumFractionDigits: 0,
-
             maximumFractionDigits: 0
-
           }
-
         );
 
 
-      resultado.style.display =
-        "block";
-
-
-      /* MOSTRAR AVISO */
-
-      aviso.style.display =
-        "block";
-
+      resultado.style.display = "block";
+      aviso.style.display = "block";
     }
 
-
-    /* COTIZAR CON ENTER */
 
     document
       .getElementById("precioUSD")
       .addEventListener(
-
         "keydown",
-
         function(event) {
 
-          if (
-            event.key === "Enter"
-          ) {
-
+          if (event.key === "Enter") {
             cotizar();
-
           }
 
         }
-
       );
-
 
   </script>
 
