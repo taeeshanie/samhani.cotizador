@@ -1,16 +1,23 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
+
   <meta charset="UTF-8">
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
 
-  <title>Pocamarket Cotizador</title>
+  <title>Samahani Cotizador</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
 
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
 
   <link
     href="https://fonts.googleapis.com/css2?family=Yeseva+One&display=swap"
@@ -23,157 +30,166 @@
       box-sizing: border-box;
     }
 
-    html {
-      width: 100%;
+    html,
+    body {
+      margin: 0;
+      padding: 0;
       min-height: 100%;
     }
 
     body {
-      margin: 0;
-      min-height: 100vh;
-
-      background-image: url("./fondo.png");
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      background-attachment: fixed;
-
-      font-family: Arial, sans-serif;
-
-      overflow-x: hidden;
-    }
-
-    /* =========================
-       CONTENEDOR GENERAL
-    ========================= */
-
-    .pagina {
       min-height: 100vh;
 
       display: flex;
       flex-direction: column;
       align-items: center;
 
-      padding: 25px 15px 50px;
+      padding: 0 15px 150px;
+
+      font-family: "Yeseva One", serif;
+
+      background-image: url("fondo.png");
+      background-size: cover;
+      background-position: center top;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
     }
 
+
     /* =========================
-       DECORACIÓN SUPERIOR
+       DECORACIÓN
     ========================= */
 
     .decoracion {
-      width: min(850px, 95vw);
-
-      position: relative;
-
-      z-index: 2;
-
-      margin-bottom: -25px;
+      width: 100%;
+      max-width: 1000px;
+      margin-bottom: 10px;
     }
 
     .decoracion img {
       display: block;
-
       width: 100%;
       height: auto;
     }
 
+
     /* =========================
-       ZONA DEL PLATO
+       CONTENEDOR MANZANA
     ========================= */
 
-    .zona-cotizador {
-      width: min(800px, 95vw);
-
+    .apple-container {
       position: relative;
+
+      width: min(96vw, 1100px);
+      aspect-ratio: 1.12 / 1;
+
+      margin-top: 10px;
 
       display: flex;
       justify-content: center;
       align-items: center;
+
+      transition: height 0.35s ease;
     }
 
-    .plato {
-      display: block;
+
+    /* SVG */
+
+    .apple-frame {
+      position: absolute;
+
+      inset: 0;
 
       width: 100%;
-      height: auto;
+      height: 100%;
+
+      z-index: 1;
 
       pointer-events: none;
+
+      overflow: visible;
     }
+
 
     /* =========================
        COTIZADOR
     ========================= */
 
     .cotizador {
-      position: absolute;
+      position: relative;
 
-      top: 50%;
-      left: 50%;
+      z-index: 2;
 
-      transform: translate(-50%, -50%);
+      width: 63%;
 
-      width: 55%;
+      margin-top: 7%;
+
+      padding: 40px 10px 45px;
+
+      background: transparent;
 
       text-align: center;
     }
+
 
     /* =========================
        INPUT
     ========================= */
 
-    .campo-precio {
+    .input-container {
       position: relative;
-
       width: 100%;
     }
 
-    #precioUSD {
+    .input-usd {
       width: 100%;
 
-      padding: 18px 60px 18px 20px;
+      padding: 25px 75px 25px 28px;
 
-      border: 2px solid #9b2924;
+      border: 3px solid #9f2924;
+      border-radius: 22px;
 
-      border-radius: 18px;
+      background: rgba(255,255,255,0.75);
 
-      background: rgba(255, 255, 255, 0.55);
-
-      color: #6d2a25;
+      color: #555;
 
       font-family: "Yeseva One", serif;
-
-      font-size: 23px;
+      font-size: 30px;
 
       outline: none;
     }
 
-    #precioUSD::placeholder {
-      color: #777;
+    .input-usd::placeholder {
+      color: #8c8c8c;
+      opacity: 1;
     }
 
-    #precioUSD:focus {
-      border-color: #7d1f1b;
+    .input-usd:focus {
+      border-color: #5b8917;
 
-      box-shadow: 0 0 0 4px rgba(155, 41, 36, 0.15);
+      box-shadow:
+        0 0 0 5px
+        rgba(91,137,23,0.12);
     }
 
-    .dolar {
+
+    /* SIGNO $ */
+
+    .simbolo {
       position: absolute;
 
-      right: 20px;
       top: 50%;
+      right: 28px;
 
       transform: translateY(-50%);
 
-      color: #92251f;
+      color: #96241f;
 
-      font-family: "Yeseva One", serif;
-
-      font-size: 32px;
+      font-size: 45px;
 
       pointer-events: none;
     }
+
 
     /* =========================
        BOTÓN
@@ -182,27 +198,31 @@
     button {
       width: 100%;
 
-      margin-top: 18px;
-
-      padding: 18px;
+      margin-top: 28px;
+      padding: 25px;
 
       border: none;
+      border-radius: 22px;
 
-      border-radius: 18px;
-
-      background: #4f7d13;
+      background:
+        linear-gradient(
+          135deg,
+          #5d9118,
+          #3f700b
+        );
 
       color: white;
 
       font-family: "Yeseva One", serif;
-
-      font-size: 23px;
+      font-size: 34px;
 
       cursor: pointer;
 
-      box-shadow: 0 5px 0 #35580c;
+      box-shadow:
+        0 7px 0 #315908,
+        inset 0 1px 2px rgba(255,255,255,0.18);
 
-      transition: 0.2s;
+      transition: 0.15s ease;
     }
 
     button:hover {
@@ -210,187 +230,214 @@
     }
 
     button:active {
-      transform: translateY(3px);
+      transform: translateY(4px);
 
-      box-shadow: 0 2px 0 #35580c;
+      box-shadow:
+        0 3px 0 #315908;
     }
+
 
     /* =========================
        SEPARADOR
     ========================= */
 
     .separador {
-      border-top: 2px dotted #a22c26;
+      width: 100%;
 
-      margin: 28px 0 22px;
+      margin: 42px 0 35px;
+
+      border-top: 2px dotted #a12b25;
     }
+
 
     /* =========================
        RESULTADO
     ========================= */
 
-    #resultado {
+    .resultado {
       display: none;
 
       width: 100%;
+      min-height: 170px;
 
-      padding: 25px 10px;
+      padding: 30px 20px;
 
-      border: 2px dashed #a22c26;
+      border: 2px dashed #a52b25;
+      border-radius: 28px;
 
-      border-radius: 20px;
+      background:
+        rgba(255,255,255,0.22);
 
-      background: rgba(255, 255, 255, 0.20);
+      color: #94251f;
 
-      color: #92251f;
-
-      font-family: "Yeseva One", serif;
-
-      font-size: 42px;
+      font-size: 56px;
 
       text-align: center;
+      align-content: center;
+
+      word-break: break-word;
     }
+
 
     /* =========================
        ERROR
     ========================= */
 
-    #error {
+    .error {
       display: none;
 
-      margin-top: 15px;
+      margin-top: 22px;
 
-      color: #9b2924;
+      color: #a0201b;
 
+      font-family: Arial, sans-serif;
+
+      font-size: 17px;
       font-weight: bold;
 
-      font-size: 14px;
-
       text-align: center;
     }
 
+
     /* =========================
-       AVISO DEBAJO DE LA COTIZACIÓN
+       TEXTO DEBAJO DE LA MANZANA
     ========================= */
 
-    #aviso {
+    .aviso {
       display: none;
 
-      width: min(760px, 92vw);
+      width: min(90vw, 700px);
 
-      margin-top: 30px;
+      margin: 20px auto 0;
 
-      padding: 30px 35px;
+      padding: 0 20px;
+
+      color: #8f3029;
+
+      font-family: Arial, sans-serif;
+
+      font-size: 16px;
+      font-weight: bold;
+
+      line-height: 1.55;
 
       text-align: center;
-
-      background: #f7efd9;
-
-      border: 5px solid #8e211d;
-
-      border-radius: 25px;
-
-      color: #8e211d;
-
-      font-family: "Yeseva One", serif;
-
-      font-size: 27px;
-
-      line-height: 1.65;
-
-      box-shadow:
-        0 8px 0 #4f7d13,
-        0 12px 22px rgba(0, 0, 0, 0.25);
     }
 
+
     /* =========================
-       VERSIÓN CELULAR
+       CELULAR
     ========================= */
 
-    @media (max-width: 600px) {
+    @media (max-width: 700px) {
 
       body {
-        background-attachment: scroll;
+        padding: 0 5px 100px;
       }
 
-      .pagina {
-        padding-top: 18px;
-      }
+      .apple-container {
 
-      .decoracion {
         width: 100vw;
 
-        margin-bottom: -15px;
+        /* Altura inicial */
+
+        aspect-ratio: auto;
+
+        height: 620px;
+
+        margin-top: 0;
       }
 
-      .zona-cotizador {
-        width: 120vw;
+
+      /* Cuando aparece el resultado,
+         la manzana crece */
+
+      .apple-container.cotizado {
+        height: 760px;
       }
+
 
       .cotizador {
-        width: 48%;
+
+        width: 64%;
+
+        margin-top: 4%;
+
+        padding: 35px 0 30px;
       }
 
-      #precioUSD {
-        padding: 13px 40px 13px 12px;
 
-        border-radius: 13px;
+      .input-usd {
 
-        font-size: 15px;
-      }
-
-      .dolar {
-        right: 12px;
-
-        font-size: 22px;
-      }
-
-      button {
-        margin-top: 12px;
-
-        padding: 13px;
-
-        border-radius: 13px;
-
-        font-size: 16px;
-      }
-
-      .separador {
-        margin: 18px 0 14px;
-      }
-
-      #resultado {
-        padding: 16px 5px;
-
-        border-radius: 15px;
-
-        font-size: 27px;
-      }
-
-      #error {
-        font-size: 11px;
-      }
-
-      /* AVISO EN CELULAR */
-
-      #aviso {
-        width: 92vw;
-
-        margin-top: 20px;
-
-        padding: 24px 22px;
-
-        border: 4px solid #8e211d;
-
-        border-radius: 20px;
+        padding:
+          18px
+          52px
+          18px
+          16px;
 
         font-size: 20px;
 
-        line-height: 1.6;
+        border-radius: 18px;
+      }
 
-        box-shadow:
-          0 6px 0 #4f7d13,
-          0 8px 15px rgba(0, 0, 0, 0.20);
+
+      .simbolo {
+
+        right: 16px;
+
+        font-size: 31px;
+      }
+
+
+      button {
+
+        margin-top: 20px;
+
+        padding: 18px;
+
+        font-size: 23px;
+
+        border-radius: 18px;
+      }
+
+
+      .separador {
+
+        margin:
+          28px
+          0
+          25px;
+      }
+
+
+      .resultado {
+
+        min-height: 125px;
+
+        padding: 20px 10px;
+
+        font-size: 37px;
+
+        border-radius: 20px;
+      }
+
+
+      .aviso {
+
+        width: 88vw;
+
+        margin-top: 18px;
+
+        padding: 0;
+
+        font-size: 12px;
+
+        line-height: 1.55;
+      }
+
+
+      .error {
+        font-size: 12px;
       }
 
     }
@@ -401,93 +448,328 @@
 
 <body>
 
-  <main class="pagina">
 
-    <!-- DECORACIÓN SUPERIOR -->
+  <!-- DECORACIÓN -->
 
-    <div class="decoracion">
+  <div class="decoracion">
 
-      <img
-        src="./decoracion.png"
-        alt="Pocamarket"
-      >
+    <img
+      src="decoracion.png"
+      alt="Samahani Cotizador"
+    >
 
-    </div>
-
-
-    <!-- PLATO Y COTIZADOR -->
-
-    <div class="zona-cotizador">
-
-      <img
-        class="plato"
-        src="./plato.png"
-        alt=""
-      >
-
-      <div class="cotizador">
-
-        <!-- CAMPO DE PRECIO -->
-
-        <div class="campo-precio">
-
-          <input
-            type="number"
-            id="precioUSD"
-            placeholder="Precio en USD"
-            min="0"
-            step="0.01"
-          >
-
-          <span class="dolar">$</span>
-
-        </div>
+  </div>
 
 
-        <!-- BOTÓN -->
 
-        <button
-          type="button"
-          onclick="cotizar()"
+  <!-- MANZANA -->
+
+  <div
+    class="apple-container"
+    id="appleContainer"
+  >
+
+
+    <svg
+      class="apple-frame"
+
+      viewBox="0 0 1000 900"
+
+      xmlns="http://www.w3.org/2000/svg"
+
+      preserveAspectRatio="none"
+    >
+
+      <defs>
+
+        <linearGradient
+          id="redApple"
+          x1="0"
+          y1="0"
+          x2="0"
+          y2="1"
         >
-          COTIZAR
-        </button>
+
+          <stop
+            offset="0%"
+            stop-color="#f2352f"
+          />
+
+          <stop
+            offset="45%"
+            stop-color="#df1712"
+          />
+
+          <stop
+            offset="100%"
+            stop-color="#c5100d"
+          />
+
+        </linearGradient>
 
 
-        <!-- SEPARADOR -->
+        <radialGradient
+          id="creamInside"
+          cx="50%"
+          cy="45%"
+          r="70%"
+        >
 
-        <div class="separador"></div>
+          <stop
+            offset="0%"
+            stop-color="#fffdf5"
+          />
+
+          <stop
+            offset="70%"
+            stop-color="#fff8e6"
+          />
+
+          <stop
+            offset="100%"
+            stop-color="#f6e8c9"
+          />
+
+        </radialGradient>
 
 
-        <!-- RESULTADO -->
+        <linearGradient
+          id="greenLeaf"
+          x1="0"
+          y1="0"
+          x2="1"
+          y2="1"
+        >
 
-        <div id="resultado"></div>
+          <stop
+            offset="0%"
+            stop-color="#9bc943"
+          />
+
+          <stop
+            offset="100%"
+            stop-color="#477b11"
+          />
+
+        </linearGradient>
 
 
-        <!-- ERROR -->
+        <filter
+          id="shadow"
+          x="-20%"
+          y="-20%"
+          width="140%"
+          height="140%"
+        >
 
-        <div id="error">
-          Ingresá un precio válido.
-        </div>
+          <feDropShadow
+            dx="0"
+            dy="12"
+            stdDeviation="12"
+            flood-color="#5f211b"
+            flood-opacity="0.25"
+          />
+
+        </filter>
+
+      </defs>
+
+
+      <!-- CUERPO -->
+
+      <path
+
+        d="
+          M 500 180
+
+          C 430 125,
+            355 125,
+            275 155
+
+          C 155 200,
+            90 330,
+            110 500
+
+          C 125 645,
+            200 770,
+            330 810
+
+          C 400 832,
+            455 802,
+            500 790
+
+          C 545 802,
+            600 832,
+            670 810
+
+          C 800 770,
+            875 645,
+            890 500
+
+          C 910 330,
+            845 200,
+            725 155
+
+          C 645 125,
+            570 125,
+            500 180
+
+          Z
+        "
+
+        fill="url(#creamInside)"
+
+        stroke="url(#redApple)"
+
+        stroke-width="48"
+
+        stroke-linejoin="round"
+
+        filter="url(#shadow)"
+      />
+
+
+      <!-- TALLO -->
+
+      <path
+
+        d="
+          M 500 160
+          C 495 105,
+            510 70,
+            545 32
+        "
+
+        fill="none"
+
+        stroke="#6c3515"
+
+        stroke-width="28"
+
+        stroke-linecap="round"
+      />
+
+
+      <!-- HOJA -->
+
+      <path
+
+        d="
+          M 525 105
+
+          C 590 22,
+            735 20,
+            790 75
+
+          C 715 140,
+            605 155,
+            525 105
+
+          Z
+        "
+
+        fill="url(#greenLeaf)"
+
+        stroke="#426f10"
+
+        stroke-width="8"
+      />
+
+
+      <path
+
+        d="
+          M 535 105
+
+          C 610 95,
+            675 95,
+            760 78
+        "
+
+        fill="none"
+
+        stroke="#426f10"
+
+        stroke-width="6"
+
+        stroke-linecap="round"
+      />
+
+    </svg>
+
+
+
+    <!-- COTIZADOR -->
+
+    <main class="cotizador">
+
+      <div class="input-container">
+
+        <input
+
+          type="number"
+
+          id="precioUSD"
+
+          class="input-usd"
+
+          placeholder="Precio en USD"
+
+          min="0"
+
+          step="0.01"
+
+        >
+
+        <span class="simbolo">$</span>
 
       </div>
 
-    </div>
+
+      <button
+        type="button"
+        onclick="cotizar()"
+      >
+        COTIZAR
+      </button>
 
 
-    <!-- AVISO QUE APARECE DESPUÉS DE COTIZAR -->
+      <div class="separador"></div>
 
-    <div id="aviso">
 
-      La cotización ya incluye envío a casilla coreana.
+      <div
+        id="resultado"
+        class="resultado"
+      ></div>
 
-      <br><br>
 
-      Faltan agregar el envío e impuestos argentinos.
+      <div
+        id="error"
+        class="error"
+      >
+        Ingresá un precio válido.
+      </div>
 
-    </div>
+    </main>
 
-  </main>
+  </div>
+
+
+
+  <!-- TEXTO FUERA DE LA MANZANA -->
+
+  <div
+    id="aviso"
+    class="aviso"
+  >
+
+    Los precios que se muestran solo incluyen fees.
+    El envío a casilla japonesa se cobra por aparte,
+    ya que depende del peso y la cantidad de items
+    que entren en el envío.
+
+  </div>
+
 
 
   <script>
@@ -495,17 +777,25 @@
     function cotizar() {
 
       const precio = parseFloat(
-        document.getElementById("precioUSD").value
+        document
+          .getElementById("precioUSD")
+          .value
       );
+
+      const fees = 3.50;
+      const dolar = 1545;
 
       const resultado =
         document.getElementById("resultado");
 
+      const aviso =
+        document.getElementById("aviso");
+
       const error =
         document.getElementById("error");
 
-      const aviso =
-        document.getElementById("aviso");
+      const appleContainer =
+        document.getElementById("appleContainer");
 
 
       if (isNaN(precio) || precio <= 0) {
@@ -516,17 +806,22 @@
 
         error.style.display = "block";
 
-        return;
+        appleContainer.classList.remove(
+          "cotizado"
+        );
 
+        return;
       }
 
 
       error.style.display = "none";
 
 
-      /* COTIZACIÓN SIN FEES - DÓLAR A $1600 */
+      const totalUSD =
+        precio + fees;
 
-      const totalARS = precio * 1600;
+      const totalARS =
+        totalUSD * dolar;
 
 
       resultado.innerHTML =
@@ -534,6 +829,7 @@
         totalARS.toLocaleString(
           "es-AR",
           {
+            minimumFractionDigits: 0,
             maximumFractionDigits: 0
           }
         );
@@ -543,10 +839,15 @@
 
       aviso.style.display = "block";
 
+
+      /* Hace crecer la manzana */
+
+      appleContainer.classList.add(
+        "cotizado"
+      );
+
     }
 
-
-    /* PERMITE COTIZAR CON ENTER */
 
     document
       .getElementById("precioUSD")
@@ -555,9 +856,7 @@
         function(event) {
 
           if (event.key === "Enter") {
-
             cotizar();
-
           }
 
         }
@@ -566,5 +865,4 @@
   </script>
 
 </body>
-
 </html>
